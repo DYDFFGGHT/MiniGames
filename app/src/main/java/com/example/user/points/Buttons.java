@@ -1,12 +1,16 @@
 package com.example.user.points;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.Surface;
+import android.view.SurfaceView;
 import android.view.View;
 
 
@@ -14,7 +18,7 @@ import android.view.View;
  * Created by User on 16.06.2017.
  */
 
-public class Buttons extends View {
+public class Buttons extends View{
     private static final Paint color1 = new Paint();
     private static final Paint color2 = new Paint();
     private static final Paint text = new Paint();
@@ -26,6 +30,7 @@ public class Buttons extends View {
 
     public Buttons(Context context) {
         super(context);
+        Log.d("1", "kek");
         color1.setColor(Color.RED);
         color2.setColor(Color.GREEN);
         text.setColor(Color.BLACK);
@@ -61,8 +66,10 @@ public class Buttons extends View {
             if (state == State.READY_TO_TAP) {
                 scoreFinal = score;
                 state = State.LOSE;
+                Log.d("1", "c");
             } else
                 state = State.LOSE;
+          //  Intent intent = new Intent(Main2Activity.class, MainActivity.class);
         }
         return true;
     }
@@ -95,9 +102,9 @@ public class Buttons extends View {
 
         public void onTick(long millisUntilFinished) {
             k++;
-            Log.d("l", "a" + k);
+          //  Log.d("l", "a" + k);
             if (k >= l) {
-                Log.d("l", " " + k);
+            //    Log.d("l", " " + k);
                 if (state == State.WAITING)
                     state = State.READY_TO_TAP;
                 score++;
